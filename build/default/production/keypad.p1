@@ -258,55 +258,55 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3546
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3546: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
-"20 ./fuses.h
+"34 ./fuses.h
 [p x FOSC  =  INTRC_CLKOUT ]
-"21
+"35
 [p x WDTE  =  OFF        ]
-"22
-[p x PWRTE  =  OFF       ]
-"23
-[p x MCLRE  =  OFF       ]
-"24
-[p x CP  =  OFF          ]
-"25
-[p x CPD  =  OFF         ]
-"26
-[p x BOREN  =  OFF       ]
-"27
-[p x IESO  =  OFF        ]
-"28
-[p x FCMEN  =  OFF       ]
-"29
-[p x LVP  =  OFF         ]
-"32
-[p x BOR4V  =  BOR40V    ]
-"33
-[p x WRT  =  OFF         ]
 "36
-[p x BOR4V  =  BOR40V    ]
+[p x PWRTE  =  OFF       ]
 "37
+[p x MCLRE  =  OFF       ]
+"38
+[p x CP  =  OFF          ]
+"39
+[p x CPD  =  OFF         ]
+"40
+[p x BOREN  =  OFF       ]
+"41
+[p x IESO  =  OFF        ]
+"42
+[p x FCMEN  =  OFF       ]
+"43
+[p x LVP  =  OFF         ]
+"46
+[p x BOR4V  =  BOR40V    ]
+"47
 [p x WRT  =  OFF         ]
-"38 keypad.c
-[; ;keypad.c: 38: void keypad_init(void){
+"50
+[p x BOR4V  =  BOR40V    ]
+"51
+[p x WRT  =  OFF         ]
+"39 keypad.c
+[; ;keypad.c: 39: void keypad_init(void){
 [v _keypad_init `(v ~T0 @X0 1 ef ]
 {
 [e :U _keypad_init ]
 [f ]
-"40
-[; ;keypad.c: 40:     TRISB &= ~(1<<0) & ~(1<<1) & ~(1<<2) & ~(1<<3);
-[e =& _TRISB -> & & & ~ << -> 1 `i -> 0 `i ~ << -> 1 `i -> 1 `i ~ << -> 1 `i -> 2 `i ~ << -> 1 `i -> 3 `i `Vuc ]
 "41
-[; ;keypad.c: 41:     TRISB |= (1<<4) | (1<<5) | (1<<6) | (1<<7);
-[e =| _TRISB -> | | | << -> 1 `i -> 4 `i << -> 1 `i -> 5 `i << -> 1 `i -> 6 `i << -> 1 `i -> 7 `i `Vuc ]
+[; ;keypad.c: 41:     TRISB &= ~(1<<0) & ~(1<<1) & ~(1<<2) & ~(1<<3);
+[e =& _TRISB -> & & & ~ << -> 1 `i -> 0 `i ~ << -> 1 `i -> 1 `i ~ << -> 1 `i -> 2 `i ~ << -> 1 `i -> 3 `i `Vuc ]
 "42
-[; ;keypad.c: 42:     OPTION_REGbits.nRBPU = 0;
-[e = . . _OPTION_REGbits 0 5 -> -> 0 `i `uc ]
+[; ;keypad.c: 42:     TRISB |= (1<<4) | (1<<5) | (1<<6) | (1<<7);
+[e =| _TRISB -> | | | << -> 1 `i -> 4 `i << -> 1 `i -> 5 `i << -> 1 `i -> 6 `i << -> 1 `i -> 7 `i `Vuc ]
 "43
-[; ;keypad.c: 43: }
+[; ;keypad.c: 43:     OPTION_REGbits.nRBPU = 0;
+[e = . . _OPTION_REGbits 0 5 -> -> 0 `i `uc ]
+"44
+[; ;keypad.c: 44: }
 [e :UE 138 ]
 }
-"57
-[; ;keypad.c: 57: char keypad_getkey(void){
+"58
+[; ;keypad.c: 58: char keypad_getkey(void){
 [v _keypad_getkey `(uc ~T0 @X0 1 ef ]
 {
 [e :U _keypad_getkey ]
@@ -316,8 +316,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i F1268
 :U ..
 :U ..
-"59
-[; ;keypad.c: 59: char letras[4][4]={ {'1','2','3','A'},
+"60
+[; ;keypad.c: 60: char letras[4][4]={ {'1','2','3','A'},
 -> -> 49 `ui `uc
 -> -> 50 `ui `uc
 -> -> 51 `ui `uc
@@ -346,34 +346,34 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v F1271 `uc ~T0 @X0 -> 4 `i t ]
 [v _letras `F1271 ~T0 @X0 -> 4 `i a ]
 [e = _letras F1268 ]
-"63
-[; ;keypad.c: 63: int i=0;
+"64
+[; ;keypad.c: 64: int i=0;
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
-"64
-[; ;keypad.c: 64: char valor=0;
+"65
+[; ;keypad.c: 65: char valor=0;
 [v _valor `uc ~T0 @X0 1 a ]
 [e = _valor -> -> 0 `i `uc ]
-"66
-[; ;keypad.c: 66: for(i=0;i<4;i++){
+"67
+[; ;keypad.c: 67: for(i=0;i<4;i++){
 {
 [e = _i -> 0 `i ]
 [e $ < _i -> 4 `i 140  ]
 [e $U 141  ]
 [e :U 140 ]
 {
-"68
-[; ;keypad.c: 68:    if(i==0){
+"69
+[; ;keypad.c: 69:    if(i==0){
 [e $ ! == _i -> 0 `i 143  ]
 {
-"70
-[; ;keypad.c: 70:       PORTB = (1<<7)|(1<<6)|(1<<5)|(1<<4)|(1<<3)|(1<<2)|(1<<1)|(0<<0);
-[e = _PORTB -> | | | | | | | << -> 1 `i -> 7 `i << -> 1 `i -> 6 `i << -> 1 `i -> 5 `i << -> 1 `i -> 4 `i << -> 1 `i -> 3 `i << -> 1 `i -> 2 `i << -> 1 `i -> 1 `i << -> 0 `i -> 0 `i `uc ]
 "71
-[; ;keypad.c: 71:       _delay((unsigned long)((100)*(8000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
+[; ;keypad.c: 71:       PORTB = (1<<7)|(1<<6)|(1<<5)|(1<<4)|(1<<3)|(1<<2)|(1<<1)|(0<<0);
+[e = _PORTB -> | | | | | | | << -> 1 `i -> 7 `i << -> 1 `i -> 6 `i << -> 1 `i -> 5 `i << -> 1 `i -> 4 `i << -> 1 `i -> 3 `i << -> 1 `i -> 2 `i << -> 1 `i -> 1 `i << -> 0 `i -> 0 `i `uc ]
 "72
-[; ;keypad.c: 72:       while (!(PORTB & (1<<4))){valor=letras[0][0];}
+[; ;keypad.c: 72:       _delay((unsigned long)((100)*(8000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
+"73
+[; ;keypad.c: 73:       while (!(PORTB & (1<<4))){valor=letras[0][0];}
 [e $U 144  ]
 [e :U 145 ]
 {
@@ -382,8 +382,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 144 ]
 [e $ ! != & -> _PORTB `i << -> 1 `i -> 4 `i -> 0 `i 145  ]
 [e :U 146 ]
-"73
-[; ;keypad.c: 73:       while (!(PORTB & (1<<5))){valor=letras[0][1];}
+"74
+[; ;keypad.c: 74:       while (!(PORTB & (1<<5))){valor=letras[0][1];}
 [e $U 147  ]
 [e :U 148 ]
 {
@@ -392,8 +392,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 147 ]
 [e $ ! != & -> _PORTB `i << -> 1 `i -> 5 `i -> 0 `i 148  ]
 [e :U 149 ]
-"74
-[; ;keypad.c: 74:       while (!(PORTB & (1<<6))){valor=letras[0][2];}
+"75
+[; ;keypad.c: 75:       while (!(PORTB & (1<<6))){valor=letras[0][2];}
 [e $U 150  ]
 [e :U 151 ]
 {
@@ -402,8 +402,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 150 ]
 [e $ ! != & -> _PORTB `i << -> 1 `i -> 6 `i -> 0 `i 151  ]
 [e :U 152 ]
-"75
-[; ;keypad.c: 75:       while (!(PORTB & (1<<7))){valor=letras[0][3];}
+"76
+[; ;keypad.c: 76:       while (!(PORTB & (1<<7))){valor=letras[0][3];}
 [e $U 153  ]
 [e :U 154 ]
 {
@@ -412,22 +412,22 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 153 ]
 [e $ ! != & -> _PORTB `i << -> 1 `i -> 7 `i -> 0 `i 154  ]
 [e :U 155 ]
-"76
-[; ;keypad.c: 76:    }
+"77
+[; ;keypad.c: 77:    }
 }
 [e :U 143 ]
-"78
-[; ;keypad.c: 78:    if(i==1){
+"79
+[; ;keypad.c: 79:    if(i==1){
 [e $ ! == _i -> 1 `i 156  ]
 {
-"79
-[; ;keypad.c: 79:       PORTB = (1<<7)|(1<<6)|(1<<5)|(1<<4)|(1<<3)|(1<<2)|(0<<1)|(1<<0);
-[e = _PORTB -> | | | | | | | << -> 1 `i -> 7 `i << -> 1 `i -> 6 `i << -> 1 `i -> 5 `i << -> 1 `i -> 4 `i << -> 1 `i -> 3 `i << -> 1 `i -> 2 `i << -> 0 `i -> 1 `i << -> 1 `i -> 0 `i `uc ]
 "80
-[; ;keypad.c: 80:       _delay((unsigned long)((100)*(8000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
+[; ;keypad.c: 80:       PORTB = (1<<7)|(1<<6)|(1<<5)|(1<<4)|(1<<3)|(1<<2)|(0<<1)|(1<<0);
+[e = _PORTB -> | | | | | | | << -> 1 `i -> 7 `i << -> 1 `i -> 6 `i << -> 1 `i -> 5 `i << -> 1 `i -> 4 `i << -> 1 `i -> 3 `i << -> 1 `i -> 2 `i << -> 0 `i -> 1 `i << -> 1 `i -> 0 `i `uc ]
 "81
-[; ;keypad.c: 81:       while (!(PORTB & (1<<4))){valor=letras[1][0];}
+[; ;keypad.c: 81:       _delay((unsigned long)((100)*(8000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
+"82
+[; ;keypad.c: 82:       while (!(PORTB & (1<<4))){valor=letras[1][0];}
 [e $U 157  ]
 [e :U 158 ]
 {
@@ -436,8 +436,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 157 ]
 [e $ ! != & -> _PORTB `i << -> 1 `i -> 4 `i -> 0 `i 158  ]
 [e :U 159 ]
-"82
-[; ;keypad.c: 82:       while (!(PORTB & (1<<5))){valor=letras[1][1];}
+"83
+[; ;keypad.c: 83:       while (!(PORTB & (1<<5))){valor=letras[1][1];}
 [e $U 160  ]
 [e :U 161 ]
 {
@@ -446,8 +446,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 160 ]
 [e $ ! != & -> _PORTB `i << -> 1 `i -> 5 `i -> 0 `i 161  ]
 [e :U 162 ]
-"83
-[; ;keypad.c: 83:       while (!(PORTB & (1<<6))){valor=letras[1][2];}
+"84
+[; ;keypad.c: 84:       while (!(PORTB & (1<<6))){valor=letras[1][2];}
 [e $U 163  ]
 [e :U 164 ]
 {
@@ -456,8 +456,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 163 ]
 [e $ ! != & -> _PORTB `i << -> 1 `i -> 6 `i -> 0 `i 164  ]
 [e :U 165 ]
-"84
-[; ;keypad.c: 84:       while (!(PORTB & (1<<7))){valor=letras[1][3];}
+"85
+[; ;keypad.c: 85:       while (!(PORTB & (1<<7))){valor=letras[1][3];}
 [e $U 166  ]
 [e :U 167 ]
 {
@@ -466,22 +466,22 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 166 ]
 [e $ ! != & -> _PORTB `i << -> 1 `i -> 7 `i -> 0 `i 167  ]
 [e :U 168 ]
-"85
-[; ;keypad.c: 85:    }
+"86
+[; ;keypad.c: 86:    }
 }
 [e :U 156 ]
-"87
-[; ;keypad.c: 87:    if(i==2){
+"88
+[; ;keypad.c: 88:    if(i==2){
 [e $ ! == _i -> 2 `i 169  ]
 {
-"88
-[; ;keypad.c: 88:       PORTB = (1<<7)|(1<<6)|(1<<5)|(1<<4)|(1<<3)|(0<<2)|(1<<1)|(1<<0);
-[e = _PORTB -> | | | | | | | << -> 1 `i -> 7 `i << -> 1 `i -> 6 `i << -> 1 `i -> 5 `i << -> 1 `i -> 4 `i << -> 1 `i -> 3 `i << -> 0 `i -> 2 `i << -> 1 `i -> 1 `i << -> 1 `i -> 0 `i `uc ]
 "89
-[; ;keypad.c: 89:       _delay((unsigned long)((100)*(8000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
+[; ;keypad.c: 89:       PORTB = (1<<7)|(1<<6)|(1<<5)|(1<<4)|(1<<3)|(0<<2)|(1<<1)|(1<<0);
+[e = _PORTB -> | | | | | | | << -> 1 `i -> 7 `i << -> 1 `i -> 6 `i << -> 1 `i -> 5 `i << -> 1 `i -> 4 `i << -> 1 `i -> 3 `i << -> 0 `i -> 2 `i << -> 1 `i -> 1 `i << -> 1 `i -> 0 `i `uc ]
 "90
-[; ;keypad.c: 90:       while (!(PORTB & (1<<4))){valor=letras[2][0];}
+[; ;keypad.c: 90:       _delay((unsigned long)((100)*(8000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
+"91
+[; ;keypad.c: 91:       while (!(PORTB & (1<<4))){valor=letras[2][0];}
 [e $U 170  ]
 [e :U 171 ]
 {
@@ -490,8 +490,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 170 ]
 [e $ ! != & -> _PORTB `i << -> 1 `i -> 4 `i -> 0 `i 171  ]
 [e :U 172 ]
-"91
-[; ;keypad.c: 91:       while (!(PORTB & (1<<5))){valor=letras[2][1];}
+"92
+[; ;keypad.c: 92:       while (!(PORTB & (1<<5))){valor=letras[2][1];}
 [e $U 173  ]
 [e :U 174 ]
 {
@@ -500,8 +500,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 173 ]
 [e $ ! != & -> _PORTB `i << -> 1 `i -> 5 `i -> 0 `i 174  ]
 [e :U 175 ]
-"92
-[; ;keypad.c: 92:       while (!(PORTB & (1<<6))){valor=letras[2][2];}
+"93
+[; ;keypad.c: 93:       while (!(PORTB & (1<<6))){valor=letras[2][2];}
 [e $U 176  ]
 [e :U 177 ]
 {
@@ -510,8 +510,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 176 ]
 [e $ ! != & -> _PORTB `i << -> 1 `i -> 6 `i -> 0 `i 177  ]
 [e :U 178 ]
-"93
-[; ;keypad.c: 93:       while (!(PORTB & (1<<7))){valor=letras[2][3];}
+"94
+[; ;keypad.c: 94:       while (!(PORTB & (1<<7))){valor=letras[2][3];}
 [e $U 179  ]
 [e :U 180 ]
 {
@@ -520,22 +520,22 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 179 ]
 [e $ ! != & -> _PORTB `i << -> 1 `i -> 7 `i -> 0 `i 180  ]
 [e :U 181 ]
-"94
-[; ;keypad.c: 94:    }
+"95
+[; ;keypad.c: 95:    }
 }
 [e :U 169 ]
-"96
-[; ;keypad.c: 96:    if(i==3){
+"97
+[; ;keypad.c: 97:    if(i==3){
 [e $ ! == _i -> 3 `i 182  ]
 {
-"97
-[; ;keypad.c: 97:       PORTB = (1<<7)|(1<<6)|(1<<5)|(1<<4)|(0<<3)|(1<<2)|(1<<1)|(1<<0);
-[e = _PORTB -> | | | | | | | << -> 1 `i -> 7 `i << -> 1 `i -> 6 `i << -> 1 `i -> 5 `i << -> 1 `i -> 4 `i << -> 0 `i -> 3 `i << -> 1 `i -> 2 `i << -> 1 `i -> 1 `i << -> 1 `i -> 0 `i `uc ]
 "98
-[; ;keypad.c: 98:       _delay((unsigned long)((100)*(8000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
+[; ;keypad.c: 98:       PORTB = (1<<7)|(1<<6)|(1<<5)|(1<<4)|(0<<3)|(1<<2)|(1<<1)|(1<<0);
+[e = _PORTB -> | | | | | | | << -> 1 `i -> 7 `i << -> 1 `i -> 6 `i << -> 1 `i -> 5 `i << -> 1 `i -> 4 `i << -> 0 `i -> 3 `i << -> 1 `i -> 2 `i << -> 1 `i -> 1 `i << -> 1 `i -> 0 `i `uc ]
 "99
-[; ;keypad.c: 99:       while (!(PORTB & (1<<4))){valor=letras[3][0];}
+[; ;keypad.c: 99:       _delay((unsigned long)((100)*(8000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
+"100
+[; ;keypad.c: 100:       while (!(PORTB & (1<<4))){valor=letras[3][0];}
 [e $U 183  ]
 [e :U 184 ]
 {
@@ -544,8 +544,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 183 ]
 [e $ ! != & -> _PORTB `i << -> 1 `i -> 4 `i -> 0 `i 184  ]
 [e :U 185 ]
-"100
-[; ;keypad.c: 100:       while (!(PORTB & (1<<5))){valor=letras[3][1];}
+"101
+[; ;keypad.c: 101:       while (!(PORTB & (1<<5))){valor=letras[3][1];}
 [e $U 186  ]
 [e :U 187 ]
 {
@@ -554,8 +554,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 186 ]
 [e $ ! != & -> _PORTB `i << -> 1 `i -> 5 `i -> 0 `i 187  ]
 [e :U 188 ]
-"101
-[; ;keypad.c: 101:       while (!(PORTB & (1<<6))){valor=letras[3][2];}
+"102
+[; ;keypad.c: 102:       while (!(PORTB & (1<<6))){valor=letras[3][2];}
 [e $U 189  ]
 [e :U 190 ]
 {
@@ -564,8 +564,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 189 ]
 [e $ ! != & -> _PORTB `i << -> 1 `i -> 6 `i -> 0 `i 190  ]
 [e :U 191 ]
-"102
-[; ;keypad.c: 102:       while (!(PORTB & (1<<7))){valor=letras[3][3];}
+"103
+[; ;keypad.c: 103:       while (!(PORTB & (1<<7))){valor=letras[3][3];}
 [e $U 192  ]
 [e :U 193 ]
 {
@@ -574,22 +574,22 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 192 ]
 [e $ ! != & -> _PORTB `i << -> 1 `i -> 7 `i -> 0 `i 193  ]
 [e :U 194 ]
-"103
-[; ;keypad.c: 103:       }
+"104
+[; ;keypad.c: 104:       }
 }
 [e :U 182 ]
-"104
-[; ;keypad.c: 104:    }
+"105
+[; ;keypad.c: 105:    }
 }
 [e ++ _i -> 1 `i ]
 [e $ < _i -> 4 `i 140  ]
 [e :U 141 ]
 }
-"106
-[; ;keypad.c: 106:    return valor;
+"107
+[; ;keypad.c: 107:    return valor;
 [e ) _valor ]
 [e $UE 139  ]
-"107
-[; ;keypad.c: 107: }
+"108
+[; ;keypad.c: 108: }
 [e :UE 139 ]
 }

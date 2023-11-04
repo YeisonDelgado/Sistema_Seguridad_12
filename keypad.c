@@ -1,7 +1,8 @@
 /*!
 \file   keypad.c
-\date   2023-09-27
-\author Yeison Delgado <yeisondelgado@unicauca.edu.co>
+\date   2023-10-6
+\author Estiven Delgado <yeisondelgado@unicauca.edu.co>
+\author Alejandra Benavides <vbenavides@unicauca.edu.co>
 \brief  Handler Keypad 4x4.
 
 \par Copyright

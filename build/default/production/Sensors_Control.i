@@ -1,4 +1,4 @@
-# 1 "keypad.c"
+# 1 "Sensors_Control.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,8 +6,8 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "keypad.c" 2
-# 22 "keypad.c"
+# 1 "Sensors_Control.c" 2
+# 22 "Sensors_Control.c"
 # 1 "C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2488,13 +2488,15 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 2 3
-# 22 "keypad.c" 2
+# 22 "Sensors_Control.c" 2
 
-# 1 "./keypad.h" 1
-# 53 "./keypad.h"
-void keypad_init (void);
-char keypad_getkey(void);
-# 23 "keypad.c" 2
+# 1 "./Sensors_Control.h" 1
+# 33 "./Sensors_Control.h"
+void ADC_Init(void);
+int Use_Chanel(int select);
+int Calculus_Temperature(int temperature);
+unsigned char Sensors_IHM(void);
+# 23 "Sensors_Control.c" 2
 
 # 1 "./fuses.h" 1
 # 34 "./fuses.h"
@@ -2516,63 +2518,79 @@ char keypad_getkey(void);
 
 #pragma config BOR4V = BOR40V
 #pragma config WRT = OFF
-# 24 "keypad.c" 2
-# 39 "keypad.c"
-void keypad_init(void){
+# 24 "Sensors_Control.c" 2
 
-    TRISB &= ~(1<<0) & ~(1<<1) & ~(1<<2) & ~(1<<3);
-    TRISB |= (1<<4) | (1<<5) | (1<<6) | (1<<7);
-    OPTION_REGbits.nRBPU = 0;
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.41\\pic\\include\\c90\\math.h" 1 3
+
+
+
+# 1 "C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\__unsupported.h" 1 3
+# 5 "C:\\Program Files\\Microchip\\xc8\\v2.41\\pic\\include\\c90\\math.h" 2 3
+# 30 "C:\\Program Files\\Microchip\\xc8\\v2.41\\pic\\include\\c90\\math.h" 3
+extern double fabs(double);
+extern double floor(double);
+extern double ceil(double);
+extern double modf(double, double *);
+extern double sqrt(double);
+extern double atof(const char *);
+extern double sin(double) ;
+extern double cos(double) ;
+extern double tan(double) ;
+extern double asin(double) ;
+extern double acos(double) ;
+extern double atan(double);
+extern double atan2(double, double) ;
+extern double log(double);
+extern double log10(double);
+extern double pow(double, double) ;
+extern double exp(double) ;
+extern double sinh(double) ;
+extern double cosh(double) ;
+extern double tanh(double);
+extern double eval_poly(double, const double *, int);
+extern double frexp(double, int *);
+extern double ldexp(double, int);
+extern double fmod(double, double);
+extern double trunc(double);
+extern double round(double);
+# 25 "Sensors_Control.c" 2
+# 42 "Sensors_Control.c"
+void ADC_Init(void){
+    ADCON1bits.ADFM = 1;
+    ADCON1bits.VCFG0 = 0;
+    ADCON1bits.VCFG1 = 0;
+    ADCON0bits.ADCS = 0b01;
 }
-# 58 "keypad.c"
-char keypad_getkey(void){
+# 61 "Sensors_Control.c"
+int Use_Chanel(int select){
+    ADCON0bits.CHS = (0x0f & select);
+    ADCON0bits.ADON = 1;
+    _delay((unsigned long)((30)*(8000000/4000000.0)));
+    ADCON0bits.GO = 1;
+    while (ADCON0bits.GO);
+    ADCON0bits.ADON = 0;
 
-char letras[4][4]={ {'1','2','3','A'},
-                     {'4','5','6','B'},
-                     {'7','8','9','C'},
-                     {'*','0','#','D'}};
-int i=0;
-char valor=0;
-
-for(i=0;i<4;i++){
-
-   if(i==0){
-
-      PORTB = (1<<7)|(1<<6)|(1<<5)|(1<<4)|(1<<3)|(1<<2)|(1<<1)|(0<<0);
-      _delay((unsigned long)((100)*(8000000/4000000.0)));
-      while (!(PORTB & (1<<4))){valor=letras[0][0];}
-      while (!(PORTB & (1<<5))){valor=letras[0][1];}
-      while (!(PORTB & (1<<6))){valor=letras[0][2];}
-      while (!(PORTB & (1<<7))){valor=letras[0][3];}
-   }
-
-   if(i==1){
-      PORTB = (1<<7)|(1<<6)|(1<<5)|(1<<4)|(1<<3)|(1<<2)|(0<<1)|(1<<0);
-      _delay((unsigned long)((100)*(8000000/4000000.0)));
-      while (!(PORTB & (1<<4))){valor=letras[1][0];}
-      while (!(PORTB & (1<<5))){valor=letras[1][1];}
-      while (!(PORTB & (1<<6))){valor=letras[1][2];}
-      while (!(PORTB & (1<<7))){valor=letras[1][3];}
-   }
-
-   if(i==2){
-      PORTB = (1<<7)|(1<<6)|(1<<5)|(1<<4)|(1<<3)|(0<<2)|(1<<1)|(1<<0);
-      _delay((unsigned long)((100)*(8000000/4000000.0)));
-      while (!(PORTB & (1<<4))){valor=letras[2][0];}
-      while (!(PORTB & (1<<5))){valor=letras[2][1];}
-      while (!(PORTB & (1<<6))){valor=letras[2][2];}
-      while (!(PORTB & (1<<7))){valor=letras[2][3];}
-   }
-
-   if(i==3){
-      PORTB = (1<<7)|(1<<6)|(1<<5)|(1<<4)|(0<<3)|(1<<2)|(1<<1)|(1<<0);
-      _delay((unsigned long)((100)*(8000000/4000000.0)));
-      while (!(PORTB & (1<<4))){valor=letras[3][0];}
-      while (!(PORTB & (1<<5))){valor=letras[3][1];}
-      while (!(PORTB & (1<<6))){valor=letras[3][2];}
-      while (!(PORTB & (1<<7))){valor=letras[3][3];}
-      }
-   }
-
-   return valor;
+    return ((ADRESH << 8) | ADRESL);
 }
+# 84 "Sensors_Control.c"
+int Calculus_Temperature(int temperature){
+    long a = 1023 - temperature;
+
+    float tempC = (float)(4090/(log((1025.0 * 10 / a - 10) / 10) + 4090/298.0) - 273.0);
+    float tempF = (float)(tempC + 273.15);
+    return (int)tempC;
+}
+# 104 "Sensors_Control.c"
+unsigned char Sensors_IHM(void){
+    unsigned char alarm_activate = 0;
+    if(RC1 == 0){
+        alarm_activate = 1;
+    }
+    if(RC0 == 1){
+        alarm_activate = 1;
+    }
+    if(RC2 == 1){
+        alarm_activate = 1;
+    }
+    return alarm_activate;
+ }

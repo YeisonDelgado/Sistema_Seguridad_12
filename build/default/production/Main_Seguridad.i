@@ -7,7 +7,7 @@
 # 1 "C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "Main_Seguridad.c" 2
-# 20 "Main_Seguridad.c"
+# 22 "Main_Seguridad.c"
 # 1 "C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2488,139 +2488,11 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 2 3
-# 20 "Main_Seguridad.c" 2
-
-
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.41\\pic\\include\\c90\\stdio.h" 1 3
-
-
-
-# 1 "C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\__size_t.h" 1 3
-
-
-
-typedef unsigned size_t;
-# 5 "C:\\Program Files\\Microchip\\xc8\\v2.41\\pic\\include\\c90\\stdio.h" 2 3
-# 1 "C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\__null.h" 1 3
-# 6 "C:\\Program Files\\Microchip\\xc8\\v2.41\\pic\\include\\c90\\stdio.h" 2 3
-
-
-
-
-
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.41\\pic\\include\\c90\\stdarg.h" 1 3
-
-
-
-
-
-
-typedef void * va_list[1];
-
-#pragma intrinsic(__va_start)
-extern void * __va_start(void);
-
-#pragma intrinsic(__va_arg)
-extern void * __va_arg(void *, ...);
-# 12 "C:\\Program Files\\Microchip\\xc8\\v2.41\\pic\\include\\c90\\stdio.h" 2 3
-# 43 "C:\\Program Files\\Microchip\\xc8\\v2.41\\pic\\include\\c90\\stdio.h" 3
-struct __prbuf
-{
- char * ptr;
- void (* func)(char);
-};
-# 85 "C:\\Program Files\\Microchip\\xc8\\v2.41\\pic\\include\\c90\\stdio.h" 3
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.41\\pic\\include\\c90\\conio.h" 1 3
-
-
-
-
-
-
-
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.41\\pic\\include\\c90\\errno.h" 1 3
-# 29 "C:\\Program Files\\Microchip\\xc8\\v2.41\\pic\\include\\c90\\errno.h" 3
-extern int errno;
-# 9 "C:\\Program Files\\Microchip\\xc8\\v2.41\\pic\\include\\c90\\conio.h" 2 3
-
-
-
-extern void init_uart(void);
-
-extern char getch(void);
-extern char getche(void);
-extern void putch(char);
-extern void ungetch(char);
-
-extern __bit kbhit(void);
-
-
-
-extern char * cgets(char *);
-extern void cputs(const char *);
-# 86 "C:\\Program Files\\Microchip\\xc8\\v2.41\\pic\\include\\c90\\stdio.h" 2 3
-
-
-extern int cprintf(char *, ...);
-#pragma printf_check(cprintf)
-
-
-
-extern int _doprnt(struct __prbuf *, const register char *, register va_list);
-# 180 "C:\\Program Files\\Microchip\\xc8\\v2.41\\pic\\include\\c90\\stdio.h" 3
-#pragma printf_check(vprintf) const
-#pragma printf_check(vsprintf) const
-
-extern char * gets(char *);
-extern int puts(const char *);
-extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
-extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
-extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
-extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
-extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
-extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
-
-#pragma printf_check(printf) const
-#pragma printf_check(sprintf) const
-extern int sprintf(char *, const char *, ...);
-extern int printf(const char *, ...);
 # 22 "Main_Seguridad.c" 2
 
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.41\\pic\\include\\c90\\string.h" 1 3
-# 14 "C:\\Program Files\\Microchip\\xc8\\v2.41\\pic\\include\\c90\\string.h" 3
-extern void * memcpy(void *, const void *, size_t);
-extern void * memmove(void *, const void *, size_t);
-extern void * memset(void *, int, size_t);
-# 36 "C:\\Program Files\\Microchip\\xc8\\v2.41\\pic\\include\\c90\\string.h" 3
-extern char * strcat(char *, const char *);
-extern char * strcpy(char *, const char *);
-extern char * strncat(char *, const char *, size_t);
-extern char * strncpy(char *, const char *, size_t);
-extern char * strdup(const char *);
-extern char * strtok(char *, const char *);
-
-
-extern int memcmp(const void *, const void *, size_t);
-extern int strcmp(const char *, const char *);
-extern int stricmp(const char *, const char *);
-extern int strncmp(const char *, const char *, size_t);
-extern int strnicmp(const char *, const char *, size_t);
-extern void * memchr(const void *, int, size_t);
-extern size_t strcspn(const char *, const char *);
-extern char * strpbrk(const char *, const char *);
-extern size_t strspn(const char *, const char *);
-extern char * strstr(const char *, const char *);
-extern char * stristr(const char *, const char *);
-extern char * strerror(int);
-extern size_t strlen(const char *);
-extern char * strchr(const char *, int);
-extern char * strichr(const char *, int);
-extern char * strrchr(const char *, int);
-extern char * strrichr(const char *, int);
-# 23 "Main_Seguridad.c" 2
 
 # 1 "./fuses.h" 1
-# 20 "./fuses.h"
+# 34 "./fuses.h"
 #pragma config FOSC = INTRC_CLKOUT
 #pragma config WDTE = OFF
 #pragma config PWRTE = OFF
@@ -2641,82 +2513,95 @@ extern char * strrichr(const char *, int);
 #pragma config WRT = OFF
 # 24 "Main_Seguridad.c" 2
 
+# 1 "./Sensors_Control.h" 1
+# 33 "./Sensors_Control.h"
+void ADC_Init(void);
+int Use_Chanel(int select);
+int Calculus_Temperature(int temperature);
+unsigned char Sensors_IHM(void);
+# 25 "Main_Seguridad.c" 2
+
+# 1 "./Funciones_Estado.h" 1
+# 35 "./Funciones_Estado.h"
+enum State{
+    security,
+    monitoring,
+    locked,
+    alarm,
+    environment,
+    alarm_environment
+};
+enum State Estado;
+unsigned char var_sensor_ir = 0;
+unsigned char var_sensor_hall = 0;
+unsigned char var_sensor_metal = 0;
+unsigned char intend = 0;
+
+const char password[5] ={'2','0','2','3','0'};
+char pass_user[5];
+unsigned char idx = 0;
+unsigned char system_lock = 0;
+char buffer [17];
+
+void function_Security(void);
+void function_Locked(void);
+void function_Monitoring(void);
+void function_Alarm(void);
+void function_Environment(void);
+void function_Environment_alarm(void);
+# 26 "Main_Seguridad.c" 2
+
 # 1 "./lcd.h" 1
-# 33 "./lcd.h"
+# 34 "./lcd.h"
 void LCD_Init(void);
 void LCD_Command(unsigned char );
 void LCD_Char(unsigned char x);
 void LCD_String(const char *);
 void LCD_String_xy(char, char , const char *);
 void LCD_Clear(void);
-# 25 "Main_Seguridad.c" 2
+# 27 "Main_Seguridad.c" 2
 
 # 1 "./keypad.h" 1
-# 52 "./keypad.h"
+# 53 "./keypad.h"
 void keypad_init (void);
 char keypad_getkey(void);
-# 26 "Main_Seguridad.c" 2
+# 28 "Main_Seguridad.c" 2
 
 
-
-
-
-
-
-
-const char password[5] ={'2','0','2','3',0};
-char pass_user[5];
-unsigned char idx = 0;
-unsigned char system_lock = 0;
-
-void main() {
-
-    char key = '0';
+void main(){
 
     OSCCON = 0x71;
     TRISE = 0;
     PORTE = 0;
+    TRISD = 0x00;
+    TRISC = 0x07;
+    TRISA = 0b00010011;
+    ANSEL = 0b00010011;
 
+    ADC_Init();
     LCD_Init();
     keypad_init();
 
+    Estado = security;
+
     while (1) {
-        LCD_String_xy(0,0,"Press a Key");
-        LCD_Command(0xC0);
-        do{
-            key = keypad_getkey();
-            if(key != 0){
-                LCD_Char('*');
-
-                pass_user[idx++] = key;
-            }
-            _delay((unsigned long)((100)*(8000000/4000.0)));
-        }while(idx < 5);
-
-        if(strncmp(pass_user,password,4)==0){
-            LCD_Clear();
-            LCD_String_xy(0,0,"Clave Correcta");
-            RE0 = 1;
-            idx = 0;
-
-        }else{
-
-            LCD_Clear();
-            LCD_String_xy(0,0,"Clave Incorrecta");
-            RE2 = 1;
-
-            if(system_lock == 3){
-                LCD_String_xy(0,0,"Sisteama Bloqueado");
-                RE1= 1;
-
-            }else{
-
-                system_lock++;
-                 idx = 6;
-            }
+        if(Estado == security){
+            function_Security();
         }
-        _delay((unsigned long)((2000)*(8000000/4000.0)));
-        LCD_Clear();
-
+        else if(Estado == monitoring){
+            function_Monitoring();
+        }
+        else if(Estado == locked){
+            function_Locked();
+        }
+        else if(Estado == alarm){
+            function_Alarm();
+        }
+        else if(Estado == alarm_environment){
+            function_Environment_alarm();
+        }
+        else{
+            function_Environment();
+        }
     }
 }

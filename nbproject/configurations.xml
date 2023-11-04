@@ -7,6 +7,8 @@
       <itemPath>fuses.h</itemPath>
       <itemPath>keypad.h</itemPath>
       <itemPath>lcd.h</itemPath>
+      <itemPath>Funciones_Estado.h</itemPath>
+      <itemPath>Sensors_Control.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -18,6 +20,8 @@
       <itemPath>Main_Seguridad.c</itemPath>
       <itemPath>keypad.c</itemPath>
       <itemPath>lcd.c</itemPath>
+      <itemPath>Funciones_Estado.c</itemPath>
+      <itemPath>Sensors_Control.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -73,7 +77,8 @@
         <property key="default-char-type" value="true"/>
         <property key="define-macros" value=""/>
         <property key="disable-optimizations" value="true"/>
-        <property key="extra-include-directories" value=""/>
+        <property key="extra-include-directories"
+                  value="..\..\..\..\..\Program Files\Microchip\xc8\v2.41\pic\include\proc"/>
         <property key="favor-optimization-for" value="-speed,+space"/>
         <property key="garbage-collect-data" value="true"/>
         <property key="garbage-collect-functions" value="true"/>

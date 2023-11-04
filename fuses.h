@@ -1,9 +1,23 @@
-/* 
- * File:   fuses.h
- * Author: estiv
- *
- * Created on 27 de septiembre de 2023, 11:16 AM
- */
+/*!
+\file   fuses.h
+\date   2023-10-26
+\author Estiven Delgado <yeisondelgado@unicauca.edu.co>
+\author Alejandra Benavides <vbenavides@unicauca.edu.co>
+\brief  Configuracion interna microcontrolador.
+
+\par Copyright
+Information contained herein is proprietary to and constitutes valuable
+confidential trade secrets of unicauca, and
+is subject to restrictions on use and disclosure.
+
+\par
+Copyright (c) unicauca 2023. All rights reserved.
+
+\par
+The copyright notices above do not evidence any actual or
+intended publication of this material.
+******************************************************************************
+*/
 
 #ifndef FUSES_H
 #define	FUSES_H

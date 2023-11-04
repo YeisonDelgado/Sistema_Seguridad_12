@@ -2,6 +2,7 @@
 \file   lcd.c
 \date   2023-09-27
 \author Yeison Delgado <yeisondelgado@unicauca.edu.co>
+\author Alejandra Benavides <vbenavides@unicauca.edu.co>
 \brief  LCD 16x2 mode 4 bits.
 
 \par Copyright
@@ -34,7 +35,6 @@ intended publication of this material.
 * NOTE:
 * 
 ******************************************************************************/
-
 void LCD_Init(void){
     LCD_Port = 0;         /*PORT as Output Port*/
     __delay_ms(15);       /* 15 ms, Power-On delay*/
@@ -86,7 +86,6 @@ void LCD_Command(unsigned char cmd )
 * NOTE:
 * 
 *****************************************************************************/
-
 void LCD_Char(unsigned char dat)
 {
 	ldata = (ldata & 0x0f) | (0xF0 & dat);  /*Send higher nibble of data first to PORT*/
@@ -102,6 +101,19 @@ void LCD_Char(unsigned char dat)
 	__delay_ms(3);
 }
 
+/*F**************************************************************************
+* NAME: LCD_String
+*----------------------------------------------------------------------------
+* PARAMS:   none
+* return:   none
+*----------------------------------------------------------------------------
+* PURPOSE:
+* Clear the Display Screen
+*----------------------------------------------------------------------------
+* NOTE:
+* 
+*****************************************************************************/
+
 void LCD_String(const char *msg)
 {
 	while((*msg)!=0)
@@ -111,6 +123,18 @@ void LCD_String(const char *msg)
     }
 }
 
+/*F**************************************************************************
+* NAME: LCD_String_xy
+*----------------------------------------------------------------------------
+* PARAMS:   none
+* return:   none
+*----------------------------------------------------------------------------
+* PURPOSE:
+* Clear the Display Screen
+*----------------------------------------------------------------------------
+* NOTE:
+* 
+*****************************************************************************/
 void LCD_String_xy(char row,char pos,const char *msg)
 {
     char location=0;

@@ -7,7 +7,7 @@
 # 1 "C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "lcd.c" 2
-# 21 "lcd.c"
+# 22 "lcd.c"
 # 1 "C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2488,20 +2488,20 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 2 3
-# 21 "lcd.c" 2
+# 22 "lcd.c" 2
 
 # 1 "./lcd.h" 1
-# 33 "./lcd.h"
+# 34 "./lcd.h"
 void LCD_Init(void);
 void LCD_Command(unsigned char );
 void LCD_Char(unsigned char x);
 void LCD_String(const char *);
 void LCD_String_xy(char, char , const char *);
 void LCD_Clear(void);
-# 22 "lcd.c" 2
+# 23 "lcd.c" 2
 
 # 1 "./fuses.h" 1
-# 20 "./fuses.h"
+# 34 "./fuses.h"
 #pragma config FOSC = INTRC_CLKOUT
 #pragma config WDTE = OFF
 #pragma config PWRTE = OFF
@@ -2520,7 +2520,7 @@ void LCD_Clear(void);
 
 #pragma config BOR4V = BOR40V
 #pragma config WRT = OFF
-# 23 "lcd.c" 2
+# 24 "lcd.c" 2
 # 38 "lcd.c"
 void LCD_Init(void){
     TRISD = 0;
@@ -2546,7 +2546,7 @@ void LCD_Command(unsigned char cmd )
  PORTDbits.RD1 = 0;
  _delay((unsigned long)((3)*(8000000/4000.0)));
 }
-# 90 "lcd.c"
+# 89 "lcd.c"
 void LCD_Char(unsigned char dat)
 {
  PORTD = (PORTD & 0x0f) | (0xF0 & dat);
@@ -2561,7 +2561,7 @@ void LCD_Char(unsigned char dat)
  PORTDbits.RD1 = 0;
  _delay((unsigned long)((3)*(8000000/4000.0)));
 }
-
+# 117 "lcd.c"
 void LCD_String(const char *msg)
 {
  while((*msg)!=0)
@@ -2570,7 +2570,7 @@ void LCD_String(const char *msg)
    msg++;
     }
 }
-
+# 138 "lcd.c"
 void LCD_String_xy(char row,char pos,const char *msg)
 {
     char location=0;
@@ -2586,7 +2586,7 @@ void LCD_String_xy(char row,char pos,const char *msg)
     }
     LCD_String(msg);
 }
-# 142 "lcd.c"
+# 166 "lcd.c"
 void LCD_Clear(void)
 {
     LCD_Command(0x01);

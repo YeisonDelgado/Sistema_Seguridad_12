@@ -1,7 +1,8 @@
 /*!
 \file   lcd.h
-\date   2023-09-27
-\author Yeison Delgado <yeisondelgado@unicauca.edu.co>
+\date   2023-10-26
+\author Estiven Delgado <yeisondelgado@unicauca.edu.co>
+\author Alejandra Benavides <vbenavides@unicauca.edu.co>
 \brief  Functions Handler LCD 16x2 mode 4 bits.
 
 \par Copyright
